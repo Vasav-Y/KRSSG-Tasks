@@ -61,5 +61,11 @@ Task_3->
 	Cyan blue circles tell us that they are part of source tree
 	Yellow circles tell us that they are part of destination tree
 	
+	In the coordinates.py file to change the image which you want to read modify the 
+	line 3 accordingly by specifying address of that image
+	
+	In the rrt_star_connect.py file to change the image which you want to read modify the line 411 accordingly
+	
+	
 
 
