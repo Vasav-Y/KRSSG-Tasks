@@ -49,7 +49,8 @@ Task_2 -> This contains all the files for the task 2
 			folder and open only that folder in vscode and run traffic.py because otherwise you’ll
 			have to change the path of input.txt in reading it from traffic.py accordingly
 			
-Task_3-> This contains the two images on which we had to draw path in the images folder and two python files
+Task_3-> 
+	This contains the two images on which we had to draw path in the images folder and two python files
 	The python file rrt_star_connect.py contains the code for the path generation between the source and destination points of the image
 	To generate the path first we will need to enter the x and y coordinates of source as well as destination which can be found 
 		using the coordinates.py file 
