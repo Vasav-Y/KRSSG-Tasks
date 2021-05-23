@@ -5,7 +5,7 @@ KRSSG Task Round
 
 Task_1->It contains all the files for the task 1
 
-	•	Bonus-
+	â€¢	Bonus-
 			This contains the files for the bonus round
 			First run casino.py file
 			Then run client.py file and enter the name Client
@@ -19,7 +19,7 @@ Task_1->It contains all the files for the task 1
 			them down to scale of 1-13 and return max value to the casino server and on 
 			this basis casino server will calculate the score for each  round and announce the winner at the end of the last round
 
-	•	WithoutBonus-
+	â€¢	WithoutBonus-
 			This contains all the files without bonus
 			First open a terminal and run casino.py
 			Then open three terminals run player.py in them
@@ -28,7 +28,7 @@ Task_1->It contains all the files for the task 1
 
 Task_2 -> This contains all the files for the task 2
 
-	•	Bonus-
+	â€¢	Bonus-
 			This contains the file for the bonus round.
 			First run traffic.py in a terminal 
 			Then run client.py in a terminal enter the name of the lane which it will represent and send data for
@@ -38,14 +38,27 @@ Task_2 -> This contains all the files for the task 2
 			
 			After this traffic.py will run for 1 time step and clear the traffic
 			If more car has to entered, enter them the same way as before
-			If no more cars has to be entered then enter ‘-1’ in both the inputs where client asks the number of straight and right going cars
+			If no more cars has to be entered then enter â€˜-1â€™ in both the inputs where client asks the number of straight and right going cars
 			Then traffic.py will run until all the traffic is resolved
 
-	•	WithoutBonus-
+	â€¢	WithoutBonus-
 			First enter the input of cars in the file input.txt and then run traffic.py
 			It will ask the number of time steps for which input will be given enter the number of lines in input.txt
 			Then traffic.py will run until all the traffic is resolved
 			**If running this in Vscode then keep input.txt and traffic.py in the same
-			folder and open only that folder in vscode and run traffic.py because otherwise you’ll
+			folder and open only that folder in vscode and run traffic.py because otherwise youâ€™ll
 			have to change the path of input.txt in reading it from traffic.py accordingly
+			
+Task_3-> This contains the two images on which we had to draw path in the images folder and two python files
+	The python file rrt_star_connect.py contains the code for the path generation between the source and destination points of the image
+	To generate the path first we will need to enter the x and y coordinates of source as well as destination which can be found 
+		using the coordinates.py file 
+	First run the coordinates.py file to find the coordinates of the source and destination 
+	Then run the rrt_star_connect.py file and enter the coordinates of source and destination and the image having the path will be 
+	shown usign opencv
+	In the image the blue line joining the source and destination gives us a short path between them
+	Cyan blue circles tell us that they are part of source tree
+	Yellow circles tell us that they are part of destination tree
+	
+
 
