@@ -273,3 +273,22 @@ while(j >= t+1):
     j += 1
     if(carstot[0] == 0 and carstot[1] == 0 and carstot[2] == 0 and carstot[3] == 0 and carstot[4] == 0 and carstot[5] == 0 and carstot[6] == 0 and carstot[7] == 0):
         break
+
+#There are total of 12 cases for clearing traffic
+'''Which are as follows
+(1)A straight, A right
+(2)A right, B right
+(3)A straight, B straight
+(4)A straight, D right
+(5)B straight, B right
+(6)B straight, C right
+(7)C straight, C right
+(8)C right, D right
+(9)C straight, D straight
+(10)C straight, A right
+(11)D straight, D right
+(12)D straight, B right
+
+if my TrafficResolve function calls a state say A straight and A right but the number of cars which want to go right from lane A so in this
+case singlecars function will be called and a single car will be allowed to clear traffic
+'''
