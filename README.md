@@ -54,4 +54,22 @@ Task_2 -> It contains two folders
 			have to change the path of input.txt in reading it from traffic.py accordingly
 
 
+Task_3-> 
+	This contains the two images on which we had to draw path in the images folder and two python files
+	The python file rrt_star_connect.py contains the code for the path generation between the source and destination points of the image
+	To generate the path first we will need to enter the x and y coordinates of source as well as destination which can be found 
+		using the check_coordinates.py file 
+	First run the check_coordinates.py file to find the coordinates of the source and destination 
+	Then run the rrt_star_connect.py file and enter the coordinates of source and destination and the image having the path will be 
+	shown usign opencv
+	In the image the blue line joining the source and destination gives us a short path between them
+	Cyan blue circles tell us that they are part of source tree
+	Yellow circles tell us that they are part of destination tree
+	
+	In the check_coordinates.py file to change the image which you want to read modify the 
+	line 3 accordingly by specifying address of that image
+	
+	In the rrt_star_connect.py file to change the image which you want to read modify the line 411 accordingly
+
+
 
