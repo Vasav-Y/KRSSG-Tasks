@@ -3,6 +3,7 @@ import socket
 import pickle
 from time import sleep
 
+hall = 0
 input_list = []
 car = []
 carstot = [0,0,0,0,0,0,0,0]
@@ -13,239 +14,134 @@ lights = 0
 j = 1
 d = 0
 
+'''All the states '''
+states = [[0,1],[0,2],[0,7],[1,3],[1,4],[2,3],[2,5],[3,6],[4,5],[4,6],[5,7],[6,7]]
+
 s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 s.bind((socket.gethostname(),1235))
 
-class TrafficResolve():
-    @staticmethod
-    def states():
-        if(carstot[0]>=4):
-            case = random.choice([1,3,4])
-        elif(carstot[1]>=4):
-            case = random.choice([1,2,10])
-        elif(carstot[2]>=4):
-            case = random.choice([3,5,6])
-        elif(carstot[3]>=4):
-            case = random.choice([2,5,12])
-        elif(carstot[4]>=4):
-            case = random.choice([7,9,10])
-        elif(carstot[5]>=4):
-            case = random.choice([6,7,8])
-        elif(carstot[6]>=4):
-            case = random.choice([9,11,12])
-        elif(carstot[7]>=4):
-            case = random.choice([4,8,11])
-        else:
-            case = random.randint(1, 12)
+def PrintA(lane,x,y):
+    if(x == 0 and y == 1):
+        print(f"{lane} - go straight, go right ")
+    elif( x== 0 or y == 0):
+        print(f"{lane} - go straight")
+    elif(x == 1 or y == 1):
+        print(f"{lane} - go right ")
+    else:
+        print(f"{lane} - off ")
 
-        if (case == 1):
-            if(carstot[0] > 0 and carstot[1] > 0):
-                Lane.LaneCars(lanes[0],'s')
-                Lane.LaneCars(lanes[0],'r')
-                Lane.LaneCars(lanes[1], 'n')
-                Lane.LaneCars(lanes[2], 'n')
-                Lane.LaneCars(lanes[3], 'n')
-            else:
-                TrafficResolve.SingleCars()
+def PrintB(lane,x,y):
+    if(x == 2 and y == 3):
+        print(f"{lane} - go straight, go right ")
+    elif( x== 2 or y == 2):
+        print(f"{lane} - go straight")
+    elif(x == 3 or y == 3):
+        print(f"{lane} - go right ")
+    else:
+        print(f"{lane} - off ")
 
-        elif(case == 2):
-            if(carstot[1] > 0 and carstot[3] > 0):
-                Lane.LaneCars(lanes[0], 'r')
-                Lane.LaneCars(lanes[1], 'r')
-                Lane.LaneCars(lanes[2], 'n')
-                Lane.LaneCars(lanes[3], 'n')
-            else:
-                TrafficResolve.SingleCars()
+def PrintC(lane,x,y):
+    if(x == 4 and y == 5):
+        print(f"{lane} - go straight, go right ")
+    elif( x== 4 or y == 4):
+        print(f"{lane} - go straight")
+    elif(x == 5 or y == 5):
+        print(f"{lane} - go right ")
+    else:
+        print(f"{lane} - off ")
 
-        elif(case == 3):
-            if(carstot[0] > 0 and carstot[2] > 0):
-                Lane.LaneCars(lanes[0], 's')
-                Lane.LaneCars(lanes[1], 's')
-                Lane.LaneCars(lanes[2], 'n')
-                Lane.LaneCars(lanes[3], 'n')
-            else:
-                TrafficResolve.SingleCars()
+def PrintD(lane,x,y):
+    if(x == 6 and y == 7):
+        print(f"{lane} - go straight, go right ")
+    elif( x== 6 or y == 6):
+        print(f"{lane} - go straight")
+    elif(x == 7 or y == 7):
+        print(f"{lane} - go right ")
+    else:
+        print(f"{lane} - off ")
 
-        elif (case == 4):
-            if(carstot[0] > 0 and carstot[7] > 0):
-                Lane.LaneCars(lanes[0],'s')
-                Lane.LaneCars(lanes[1], 'n')
-                Lane.LaneCars(lanes[2], 'n')
-                Lane.LaneCars(lanes[3], 'r')
-            else:
-                TrafficResolve.SingleCars()
+def UpdateCars(x,y):
+    carstot[x] -= 1
+    
+    if (y != None):
+        carstot[y] -= 1
 
-        elif (case == 5):
-            if(carstot[2] > 0 and carstot[3] > 0):
-                Lane.LaneCars(lanes[0],'n')
-                Lane.LaneCars(lanes[1], 's')
-                Lane.LaneCars(lanes[1], 'r')
-                Lane.LaneCars(lanes[2], 'n')
-                Lane.LaneCars(lanes[3], 'n')
-            else:
-                TrafficResolve.SingleCars()
-
-        elif(case == 6):
-            if(carstot[2] > 0 and carstot[5] > 0):
-                Lane.LaneCars(lanes[0],'n')
-                Lane.LaneCars(lanes[1], 's')
-                Lane.LaneCars(lanes[2], 'r')
-                Lane.LaneCars(lanes[3], 'n')
-            else:
-                TrafficResolve.SingleCars()
-
-        elif(case == 7):
-            if(carstot[4] > 0 and carstot[5] > 0):
-                Lane.LaneCars(lanes[0],'n')
-                Lane.LaneCars(lanes[1], 'n')
-                Lane.LaneCars(lanes[2], 's')
-                Lane.LaneCars(lanes[2], 'r')
-                Lane.LaneCars(lanes[3], 'n')
-            else:
-                TrafficResolve.SingleCars()
-
-        elif (case == 8):
-            if(carstot[5] > 0 and carstot[7] ):
-                Lane.LaneCars(lanes[0],'n')
-                Lane.LaneCars(lanes[1], 'n')
-                Lane.LaneCars(lanes[2], 'r')
-                Lane.LaneCars(lanes[3], 'r')
-            else:
-                TrafficResolve.SingleCars()
-
-        elif (case == 9):
-            if(carstot[4] > 0 and carstot[6] > 0):
-                Lane.LaneCars(lanes[0],'n')
-                Lane.LaneCars(lanes[1], 'n')
-                Lane.LaneCars(lanes[2], 's')
-                Lane.LaneCars(lanes[3], 's')
-            else:
-                TrafficResolve.SingleCars()
-
-        elif(case == 10):
-            if(carstot[1] > 0 and carstot[4] > 0):
-                Lane.LaneCars(lanes[0],'r')
-                Lane.LaneCars(lanes[1], 'n')
-                Lane.LaneCars(lanes[2], 's')
-                Lane.LaneCars(lanes[3], 'n')
-            else:
-                TrafficResolve.SingleCars()
-
-        elif(case == 11):
-            if(carstot[6] > 0 and carstot[7] > 0):
-                Lane.LaneCars(lanes[0],'n')
-                Lane.LaneCars(lanes[1], 'n')
-                Lane.LaneCars(lanes[2], 'n')
-                Lane.LaneCars(lanes[3], 's')
-                Lane.LaneCars(lanes[3], 'r')
-            else:
-                TrafficResolve.SingleCars()
-
-        elif (case == 12):
-            if(carstot[3] > 0 and carstot[6] > 0):
-                Lane.LaneCars(lanes[0],'n')
-                Lane.LaneCars(lanes[1], 'r')
-                Lane.LaneCars(lanes[2], 'n')
-                Lane.LaneCars(lanes[3], 's')
-            else:
-                TrafficResolve.SingleCars()
-    @staticmethod
-    def SingleCars():
-
-            if(carstot[0] > 0):
-                Lane.LaneCars(lanes[0],'s')
-                Lane.LaneCars(lanes[1], 'n')
-                Lane.LaneCars(lanes[2], 'n')
-                Lane.LaneCars(lanes[3], 'n')
-            elif(carstot[1] > 0):
-                Lane.LaneCars(lanes[0],'r')
-                Lane.LaneCars(lanes[1], 'n')
-                Lane.LaneCars(lanes[2], 'n')
-                Lane.LaneCars(lanes[3], 'n')
-            elif(carstot[2] > 0):
-                Lane.LaneCars(lanes[0],'n')
-                Lane.LaneCars(lanes[1], 's')
-                Lane.LaneCars(lanes[2], 'n')
-                Lane.LaneCars(lanes[3], 'n')
-            elif(carstot[3] > 0):
-                Lane.LaneCars(lanes[0],'n')
-                Lane.LaneCars(lanes[1], 'r')
-                Lane.LaneCars(lanes[2], 'n')
-                Lane.LaneCars(lanes[3], 'n')
-            elif(carstot[4] > 0):
-                Lane.LaneCars(lanes[0],'n')
-                Lane.LaneCars(lanes[1], 'n')
-                Lane.LaneCars(lanes[2], 's')
-                Lane.LaneCars(lanes[3], 'n')
-            elif(carstot[5] > 0):
-                Lane.LaneCars(lanes[0],'n')
-                Lane.LaneCars(lanes[1], 'n')
-                Lane.LaneCars(lanes[2], 'r')
-                Lane.LaneCars(lanes[3], 'n')
-            elif(carstot[6] > 0):
-                Lane.LaneCars(lanes[0],'n')
-                Lane.LaneCars(lanes[1], 'n')
-                Lane.LaneCars(lanes[2], 'n')
-                Lane.LaneCars(lanes[3], 's')
-            elif(carstot[7] > 0):
-                Lane.LaneCars(lanes[0],'n')
-                Lane.LaneCars(lanes[1], 'n')
-                Lane.LaneCars(lanes[2], 'n')
-                Lane.LaneCars(lanes[3], 'r')
-
-
-class Output:
-    @staticmethod
-    def sample():
-        global j
+    PrintA(lanes[0], x, y)
+    PrintB(lanes[1], x, y)
+    PrintC(lanes[2], x, y)
+    PrintD(lanes[3], x, y)
+    if(hall == 1):
         print(f"Output Queue : {carstot[0]} {carstot[1]} {carstot[2]} {carstot[3]} {carstot[4]} {carstot[5]} {carstot[6]} {carstot[7]}")
-        j += 1
-
-class Lane:
-    @staticmethod
-    def LaneCars(lane,dir):
-        global carstot
-        if(lane == 'A'):
-            carstrt = carstot[0]
-            carryt = carstot[1]
-        elif(lane == 'B'):
-            carstrt = carstot[2]
-            carryt = carstot[3]
-        elif(lane == 'C'):
-            carstrt = carstot[4]
-            carryt = carstot[5]
-        elif(lane == 'D'):
-            carstrt = carstot[6]
-            carryt = carstot[7]
-
-        if(dir == 's'):
-            print(f"{lane} - go straight")
-            carstrt -= 1
-        elif(dir == 'r'):
-            print(f"{lane} - go right")
-            carryt -= 1
-        elif(dir == 'n'):
-            print(f"{lane} - off")
-        
-        if(lane == 'A'):
-            carstot[0] = carstrt 
-            carstot[1] = carryt
-        elif(lane == 'B'):
-            carstot[2] = carstrt 
-            carstot[3] = carryt
-        elif(lane == 'C'):
-            carstot[4] = carstrt 
-            carstot[5] = carryt
-        elif(lane == 'D'):
-            carstot[6] = carstrt 
-            carstot[7] = carryt
-
-class TrafficHandler:
-
-    @staticmethod
-    def trafficClear():
+        print(f"\n Time Step: {j+1}\n")
         print(f"Input Queue : {carstot[0]} {carstot[1]} {carstot[2]} {carstot[3]} {carstot[4]} {carstot[5]} {carstot[6]} {carstot[7]}")
-        TrafficResolve.states()
+
+    
+def NewState(states, index_car, no_index_car):
+    global hall
+
+    if(len(index_car) == 1):
+        x = index_car[0]
+        UpdateCars(x,None)
+    
+    maxcar = max(no_index_car)
+    index_maxcar = no_index_car.index(maxcar)
+    x = index_car[index_maxcar]
+
+    counter = 0
+    for state in states:
+        if (state[0] == x):
+            y = state[1]
+            if y in index_car:
+                counter = 1
+                break
+        elif(state[1] == x):
+            if state[0] in states :
+                x = state[0]
+                y = state[1]
+                counter = 1
+                break
+    
+    if(counter == 1):
+        return UpdateCars(x,y)
+        
+    else:
+        no_index_car.remove(maxcar)
+        index_car.remove(x)
+        if(len(index_car) == 0 and sum(carstot) != 0):
+            hall = 1
+            for index, cars in enumerate(carstot):
+                if cars != 0:
+                    index_car.append(index)
+                    no_index_car.append(cars)
+
+            return NewState(states, index_car, no_index_car)
+
+        if(sum(carstot) == 0):
+            return
+        else:
+            return NewState(states, index_car, no_index_car)
+        
+        
+            
+    
+def transition():
+    print(f"Input Queue : {carstot[0]} {carstot[1]} {carstot[2]} {carstot[3]} {carstot[4]} {carstot[5]} {carstot[6]} {carstot[7]}")
+    
+    index_car = [] #stores index where car is present
+    no_index_car = [] # stores number of car at that index
+
+    for index, cars in enumerate(carstot):
+        if cars != 0:
+            index_car.append(index)
+            no_index_car.append(cars)
+
+    return NewState(states, index_car, no_index_car)
+
+def output():
+    global j
+    print(f"Output Queue : {carstot[0]} {carstot[1]} {carstot[2]} {carstot[3]} {carstot[4]} {carstot[5]} {carstot[6]} {carstot[7]}")
+    j += 1
+
 
 def CarList():
     global d
@@ -263,14 +159,14 @@ def CarList():
 
         print(f"\n Time Step: {j}\n")
         print(f"Input Line {i+1} : {car[0]} {car[1]} {car[2]} {car[3]} {car[4]} {car[5]} {car[6]} {car[7]}")
-        TrafficHandler.trafficClear()
-        Output.sample()
+        transition()
+        output()
 
 def ClearTraffic():
     global j
     while(j >= d+1):
         print(f"\n Time Step: {j}\n")
-        TrafficHandler.trafficClear()
+        transition()
         print(
             f"Output Queue : {carstot[0]} {carstot[1]} {carstot[2]} {carstot[3]} {carstot[4]} {carstot[5]} {carstot[6]} {carstot[7]}")
         j += 1
