@@ -57,9 +57,9 @@ Task_2 -> It contains two folders
 Task_3 ->
 		 It contains two folders
 
-			->Images have some images of path generated using RRT Star Connect Algorithm and turtle moving on that path for img1 and img2
-			
-			->catkin_ws to run the programs
+	->Images have some images of path generated using RRT Star Connect Algorithm and turtle moving on that path for img1 and img2
+
+	->catkin_ws to run the programs
 
 Task_4 -> Use PPO(Proximal Policy Algorithm) to train an angent(Pendulum) in OpenAI Gym environment
 	
