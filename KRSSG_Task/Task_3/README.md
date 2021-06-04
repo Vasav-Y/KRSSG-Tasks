@@ -46,6 +46,13 @@ How to run the file:
      ->in a new terminal rosrun task3 gotogoal.py
      ->This will open the image with the path and simulatneouly turtle will start running on that path
      
+
+To move a turtle in a circle :
+
+    ->in a new terminal run roscore
+    ->in a new terminal run rosrun turtlesim turtlesim_node
+    ->in a new terminal run rosservice call spawn (xcoordinate) (ycoordinate) (angle) (name)
+    ->then run rostopic pub /Turtle2/cmd_vel geometry_msgs/Twist -r 1 -- '[2.0, 0.0, 0.0]' '[0.0, 0.0, -1.8]'
      
     
     
