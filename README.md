@@ -3,7 +3,7 @@ This repo contains the tasks for the selection of AI Team of KRSSG
 
 KRSSG Task Round
 
-Task_1->It contains two folders
+Task_1 ->It contains two folders
            ->Bonus folder for the Bonus task
 		   ->WithoutBonus for normal task
 
@@ -54,22 +54,12 @@ Task_2 -> It contains two folders
 			have to change the path of input.txt in reading it from traffic.py accordingly
 
 
-Task_3-> 
-	This contains the two images on which we had to draw path in the images folder and two python files
-	The python file rrt_star_connect.py contains the code for the path generation between the source and destination points of the image
-	To generate the path first we will need to enter the x and y coordinates of source as well as destination which can be found 
-		using the check_coordinates.py file 
-	First run the check_coordinates.py file to find the coordinates of the source and destination 
-	Then run the rrt_star_connect.py file and enter the coordinates of source and destination and the image having the path will be 
-	shown usign opencv
-	In the image the blue line joining the source and destination gives us a short path between them
-	Cyan blue circles tell us that they are part of source tree
-	Yellow circles tell us that they are part of destination tree
+Task_3 -> It contains two folders
+			->Images have some images of path generated using RRT Star Connect Algorithm and turtle moving on that path for img1 and img2
+			->catkin_ws to run the programs
+
+Task_4 -> Use PPO(Proximal Policy Algorithm) to train an angent(Pendulum) in OpenAI Gym environment
 	
-	In the check_coordinates.py file to change the image which you want to read modify the 
-	line 3 accordingly by specifying address of that image
-	
-	In the rrt_star_connect.py file to change the image which you want to read modify the line 411 accordingly
 
 
 
