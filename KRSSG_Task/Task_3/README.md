@@ -1,8 +1,11 @@
 This folder contains the task3 which
 It has two folders and a doc file
-  ->Images contains images of path and turtle moving on that path
-  ->catkin_ws is the catkin workspace on which I have worked
-  ->Part3_Task3 is a doc about how I was planning to implement part3 of task3
+
+    ->Images contains images of path and turtle moving on that path
+    
+    ->catkin_ws is the catkin workspace on which I have worked
+    
+    ->Part3_Task3 is a doc about how I was planning to implement part3 of task3
   
  Important! ->Change the path of the image in the imread function accordingly
                 It lies on line 435 in rrt_star_connect.py
