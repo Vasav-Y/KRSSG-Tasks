@@ -23,7 +23,7 @@ How to run the file:
     ->copy Images folder(catkin_ws/src/turtlesim_cleaner/src/) 
     ->copy gotogoal.py and rrt_star_connect.py
     ->cd ../..
-    ->cd(now we are in catkin_ws) so run catkin_make
+    ->cd .. (now we are in catkin_ws) so run catkin_make
     ->source devel/setup.bash
     ->in a new terminal run roscore
     ->in a new terminal run turtlesim turtlesim_node
