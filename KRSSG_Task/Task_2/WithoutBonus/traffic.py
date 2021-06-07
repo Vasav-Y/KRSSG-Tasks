@@ -1,4 +1,4 @@
-xt = int(input("Enter the number of time steps for which the cars will enter: "))
+t = int(input("Enter the number of time steps for which the cars will enter: "))
 print(f"\nThe number of time steps for which the cars will enter: {t}")
 
 hall = 0
@@ -184,3 +184,4 @@ while(j >= t+1):
 
 if my FSM function calls a state say A straight and A right but the number of cars which want to go right from lane A so in this
 case singlecars function will be called and a single car will be allowed to clear traffic
+'''
